@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="scout_xarm6_base" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link
+    name="box_link">
+    <inertial>
+      <origin
+        xyz="0.017247 -0.0057664 0.13638"
+        rpy="0 0 0" />
+      <mass
+        value="2.1688" />
+      <inertia
+        ixx="0.019403"
+        ixy="-1.1237E-05"
+        ixz="-0.00039599"
+        iyy="0.066236"
+        iyz="5.3962E-07"
+        izz="0.078079" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_cr5_description/scout_meshes/box_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.02 0 0.05"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="package://scout_cr5_description/scout_meshes/box_link.STL" /> -->
+        <box size="0.650 0.270 0.250" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="laser_Link">
+    <inertial>
+      <origin
+        xyz="-0.00029458 -1.102E-05 0.035775"
+        rpy="0 0 0" />
+      <mass
+        value="0.58508" />
+      <inertia
+        ixx="0.00062907"
+        ixy="-3.4247E-08"
+        ixz="6.994E-08"
+        iyy="0.00063026"
+        iyz="-4.8147E-08"
+        izz="0.00074925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_cr5_description/scout_meshes/laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.04"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="-0.37655 2.1023E-05 0.003"
+      rpy="0 0 0" />
+    <parent
+      link="box_link" />
+    <child
+      link="laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

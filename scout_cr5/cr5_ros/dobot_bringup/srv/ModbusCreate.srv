@@ -1,0 +1,7 @@
+string ip
+int32 port
+int32 slave_id
+bool is_rtu
+---
+int32 index
+int32 res

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="scout_xarm_base">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.017247 -0.0057664 0.13638"
+        rpy="0 0 0" />
+      <mass
+        value="2.1688" />
+      <inertia
+        ixx="0.019403"
+        ixy="-1.1237E-05"
+        ixz="-0.00039599"
+        iyy="0.066236"
+        iyz="5.3962E-07"
+        izz="0.078079" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="laser_Link">
+    <inertial>
+      <origin
+        xyz="-0.00029458 -1.102E-05 0.035775"
+        rpy="0 0 0" />
+      <mass
+        value="0.58508" />
+      <inertia
+        ixx="0.00062907"
+        ixy="-3.4247E-08"
+        ixz="6.994E-08"
+        iyy="0.00063026"
+        iyz="-4.8147E-08"
+        izz="0.00074925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/laser_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0.37655 2.1023E-05 0.003"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="display_Link">
+    <inertial>
+      <origin
+        xyz="0.0013019 -6.9629E-05 0.00060167"
+        rpy="0 0 0" />
+      <mass
+        value="0.58424" />
+      <inertia
+        ixx="0.0047864"
+        ixy="1.6495E-08"
+        ixz="1.4213E-06"
+        iyy="0.0014088"
+        iyz="8.2645E-08"
+        izz="0.0034011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/display_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_xarm_base/meshes/display_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="display_joint"
+    type="fixed">
+    <origin
+      xyz="-0.40294 -0.00097898 0.18999"
+      rpy="0 -0.28807 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="display_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

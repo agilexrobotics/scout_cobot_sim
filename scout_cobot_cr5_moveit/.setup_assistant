@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: scout_cr5_description
+    relative_path: scout_cr5_with_gripper.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/scout_with_cr5.srdf
+  CONFIG:
+    author_name: qi
+    author_email: shiqi.zhao@agilex.ai
+    generated_timestamp: 1729655495

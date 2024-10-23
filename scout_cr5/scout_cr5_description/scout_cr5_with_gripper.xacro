@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<robot name="scout_with_cr5" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- <xacro:include filename="$(find scout_cr5_description)/realsense_d435.urdf" /> -->
+  <xacro:include filename="$(find scout_cr5_description)/cr5_urdf/cr5_robot.urdf"/>
+  <xacro:include filename="$(find scout_cr5_description)/scout_urdf/scout_v2.xacro" />
+  <!-- <xacro:include filename="$(find scout_description)/urdf/scout_v2.urdf" /> -->
+  <xacro:include filename="$(find scout_cr5_description)/scout_urdf/scout_base.xacro"/>
+  <!-- <xacro:include filename="$(find dh_robotics_ag95_model)/urdf/dh_robotics_ag95_model.xacro"/>  -->
+  <xacro:include filename="$(find dh_ag95_description)/urdf/ag95_macro.xacro"/>  
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+
+    <link name="dummy_base_link"/>
+    <joint
+      name="dummy_base_joint"
+      type="fixed">
+      <origin
+        xyz="0.0 0.0 0.23"
+        rpy="0 0 0" />
+      <parent
+        link="dummy_base_link" />
+      <child
+        link="base_link" />
+    </joint>
+    
+    <xacro:dh_ag95_gripper
+      prefix=""
+      transmission_hw_interface="$(arg transmission_hw_interface)" parent="Link6">
+    <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+    </xacro:dh_ag95_gripper>
+
+    <joint
+      name="scout_with_cr5"
+      type="fixed">
+      <origin
+        xyz="0.1 0 0.35"
+        rpy="0 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="arm_base" />
+    </joint>
+
+    <joint
+      name="scout_with_box"
+      type="fixed">
+      <origin
+        xyz="0 0 0.113"
+        rpy="0 0 3.1415" />
+      <parent
+        link="base_link" />
+      <child
+        link="box_link" />
+    </joint>
+
+  <link
+    name="hand_cam">
+    <inertial>
+      <origin
+        xyz="0.0009804 0.025556 -0.036977"
+        rpy="0 0 0" />
+      <mass
+        value="0.067926" />
+      <inertia
+        ixx="3.7811E-05"
+        ixy="2.2861E-18"
+        ixz="2.2446E-19"
+        iyy="9.4061E-05"
+        iyz="6.1172E-06"
+        izz="0.00012345" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+
+          <box size="0.02 0.05 0.02"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.57 0" />
+      <geometry>
+
+        <box size="0.02 0.05 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="hand_camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.0 -0.07 0.0"
+      rpy="1.57 -1.57 0" />
+    <parent
+      link="Link6" />
+    <child
+      link="hand_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+
+</robot>
+

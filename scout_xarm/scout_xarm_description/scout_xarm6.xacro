@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot name="scout_with_xarm6" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+    <!--<xacro:include filename="$(find bunker_base_description)/urdf/agx_ag95_gripper_transmission.xacro" />
+-->
+    <xacro:include filename="$(find scout_xarm_description)/scout_urdf/scout_v2.xacro" />
+    <xacro:include filename="$(find scout_xarm_description)/xarm6_urdf/xarm6_robot.urdf.xacro"/>
+    <xacro:include filename="$(find scout_xarm_base)/urdf/scout_xarm_base.xacro"/>
+    <xacro:include filename="$(find dh_robotics_ag95_model)/urdf/dh_robotics_ag95_model.xacro"/>  
+
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="ros_namespace" default="xarm"/>
+  <xacro:arg name="limited" default="false"/>
+  <xacro:arg name="effort_control" default="false"/>
+  <xacro:arg name="velocity_control" default="false"/>
+
+  <xacro:arg name="add_other_geometry" default="false"/>
+  <xacro:arg name="geometry_type" default="box"/>
+  <xacro:arg name="geometry_mass" default="0.1"/>
+  <xacro:arg name="geometry_height" default="0.1"/>
+  <xacro:arg name="geometry_radius" default="0.1"/>
+  <xacro:arg name="geometry_length" default="0.1"/>
+  <xacro:arg name="geometry_width" default="0.1"/>
+  <xacro:arg name="geometry_mesh_filename" default=""/>
+  <xacro:arg name="geometry_mesh_origin_xyz" default="0 0 0"/>
+  <xacro:arg name="geometry_mesh_origin_rpy" default="0 0 0"/>
+  <xacro:arg name="geometry_mesh_tcp_xyz" default="0 0 0"/>
+  <xacro:arg name="geometry_mesh_tcp_rpy" default="0 0 0"/>
+
+  <xacro:arg name="add_realsense_d435i" default="false"/>
+
+     <link name="dummy_base_link"/>
+     <joint
+      name="dummy_base_joint"
+      type="fixed">
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <parent
+        link="dummy_base_link" />
+      <child
+        link="base_link" />
+    </joint>
+    
+    <!-- <xacro:dh_robotics_ag95_model prefix=" "/> -->
+      <joint
+      name="xarm_with_ag95"
+      type="fixed">
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <parent
+        link="link6" />
+      <child
+        link="dh_robotics_ag95_base_link" />
+    </joint>
+
+    <joint
+      name="scout_with_xarm"
+      type="fixed">
+      <origin
+        xyz="0.212 0 0.26"
+        rpy="0 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="arm_base" />
+    </joint>
+
+    <joint
+      name="scout_with_box"
+      type="fixed">
+      <origin
+        xyz="0 0 0.113"
+        rpy="0 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="box_link" />
+    </joint>
+
+    </robot>
+
