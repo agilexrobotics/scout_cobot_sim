@@ -1,8 +1,8 @@
 # cobot s sim 	
 
-# 环境安装
+# 环境安装 Environment configuration
 
-ros环境
+ros环境 ROS Environment
 
 ```
 sudo apt-get install ros-noetic-desktop-full 
@@ -20,19 +20,19 @@ controller
 sudo apt-get install ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs ros-noetic-control-* ros-noetic-velodyne* ros-noetic-roboticsgroup-upatras-gazebo-plugins ros-noetic-robotis-manipulator ros-noetic-effort-controllers ros-noetic-joint-trajectory-action ros-noetic-joint-state-controller ros-noetic-position-controllers ros-noetic-effort-controllers ros-noetic-gripper-action-controller ros-noetic-joint-trajectory-controller
 ```
 
-创建工作空间
+创建工作空间 Create workspace
 
 ```
 mkdir -p scout_cobot_ws/src
 ```
 
-下载代码
+下载代码 Clone code
 
 ```
 https://github.com/agilexrobotics/scout_cobot_sim.git
 ```
 
-进入工作空间编译代码
+进入工作空间编译代码 cd to workspace and compile
 
 ```
 cd cobot_s_ws/src
@@ -41,13 +41,13 @@ cd ..
 catkin_make
 ```
 
-声明环境变量
+声明环境变量 source
 
 ```
 source devel/setup.bash
 ```
 
-# 启动gazebo仿真
+# 启动gazebo仿真 Launch gazebo simulation
 
 1）scout+cr5
 
@@ -61,9 +61,9 @@ roslaunch scout_cobot_cr5_moveit demo_gazebo.launch
 roslaunch scout_cobot_xarm_moveit demo_gazebo.launch 
 ```
 
-# 控制夹爪
+# 控制夹爪 Control the gripper
 
-控制夹爪闭合
+控制夹爪闭合 control the gripper to close
 
 ```
 rostopic pub /gripper_controller/gripper_cmd/goal control_msgs/GripperCommandActionGoal "header:
@@ -84,7 +84,7 @@ goal:
 
 ```
 
-控制夹爪张开
+控制夹爪张开 Control the gripper to open
 
 ```
 rostopic pub /gripper_controller/gripper_cmd/goal control_msgs/GripperCommandActionGoal "header:
